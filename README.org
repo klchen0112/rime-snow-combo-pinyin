@@ -1,0 +1,2 @@
+* Thanks
+- [[https://github.com/rimeinn/rime-snow-pinyin][snow-pinyin]]

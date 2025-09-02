@@ -1,0 +1,120 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: combo_pinyin_engrammer
+  name: 宮保拼音Engrammer
+  version: '3.0'
+  author:
+    - 居戎氏 <chen.sst@gmail.com>
+    - klchen0112@gmail.com
+  description: |
+    並擊輸入拼音
+    https://github.com/rime/home/wiki/ComboPinyin
+  dependencies:
+    - wanxiang
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: full_shape
+    states: [半角, 全角]
+  - name: traditionalization
+    states: [简, 繁]
+    reset: 0
+  - name: ascii_punct
+    states: [。，, ．，]
+  #- name: prediction
+  #  states: [ 测, 预 ]
+  #  reset: 0
+
+engine:
+  processors:
+    #- predictor                                 #联想处理器
+    #- lua_processor@select_character          # 以词定字
+    - ascii_composer #
+    - recognizer
+    - chord_composer # 實現並擊按鍵處理
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - predict_translator
+    - punct_translator
+    - script_translator
+  filters:
+    - simplifier@traditionalize # 简繁切换
+    - uniquifier
+
+#predictor:
+#  db: wanxiang-lts-zh-predict.db
+## 每次最大预测候选数
+## 默认为 0，表示显示所有候选数
+## 您可以将其设置为与 page_size 相同，这样 period 就不会触发下一页
+#  max_candidates: 5
+## 最大连续预测次数
+## 默认为 0，表示无限制
+#  max_iterations: 1
+
+chord_composer:
+
+editor:
+  bindings:
+    BackSpace: back_syllable
+
+## Lua 配置：长词优先
+## 提升 count 个词语，插入到第 idx 个位置。
+## 示例：将 2 个词插入到第 4、5 个候选项，输入 jie 得到「1接 2解 3姐 4饥饿 5极恶」
+long_word_filter:
+  count: 2
+  idx: 4
+
+
+speller:
+  alphabet: "zyxwvutsrqponmlkjihgfedcba'"
+  initials: "zyxwvutsrqponmlkjihgfedcba"
+  delimiter: " "
+  algebra:
+    # 冰雪拼音兼容
+    - derive/\d$//
+    # 合併音節
+    - derive/^lo$/lou/
+    # 合併 ⟨o / ou⟩、⟨e / ei⟩兩組韻母
+    #- derive/^([bpmf])?ou$/$1o/
+    #- derive/^([zcsr]h?)?ei$/$1e/
+    # 拼音音節一律後加隔音符號，避免音節切分歧義
+    - "xform/^([a-z]+)$/$1'/"
+
+translator:
+  dictionary: snow_pinyin
+  prism: combo_pinyin
+  packs:
+    - snow_pinyin.base
+    - snow_pinyin.ext
+    - snow_pinyin.tencent
+    - snow_pinyin.user
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+    - "xform/' /'/"
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+

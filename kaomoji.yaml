@@ -1,0 +1,5 @@
+# 颜文字
+kaomoji:
+  kaomoji:
+    option_name: kaomoji
+    opencc_config: kaomoji.json

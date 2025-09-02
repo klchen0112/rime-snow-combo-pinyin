@@ -1,0 +1,21 @@
+patch:
+  __patch:
+    - kaomoji:/kaomoji
+    - emoji:/emoji
+  __include:
+    # 使用八股文語言模型
+    - grammar:/wx?
+
+  switches/+:
+    - name: emoji
+      states: [💀, 😄]
+      reset: 1
+    - name: kaomoji
+      states: [ ￣へ￣, (u‿ฺu✿ฺ) ]
+      reset: 1
+  engine/filters/@before 2: simplifier@emoji    # Emoji
+  engine/filters/@before 3: simplifier@kaomoji # kaomoji
+  translator/packs/+:
+    - yugioh
+    - pinyin_simp_moe
+    - wiki

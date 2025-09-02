@@ -1,0 +1,201 @@
+# Rime dictionary
+# encoding: utf-8
+#
+#
+# https://pinyin.sogou.com/dict/detail/index/33899
+---
+name: yugioh
+version: "2024-04-04"
+sort: by_weight
+columns:
+  - text
+  - code
+  - weight
+use_preset_vocabulary: false
+...
+埃及使者	ai ji shi zhe	1
+暗痴汉	an chi han	1
+暗武	an wu	1
+奥义	ao yi	1
+霸王眷龙	ba wang juan long	1
+超雷龙	chao lei long	1
+超量	chao liang	1
+超再生	chao zai sheng	1
+车斗	che dou	1
+痴汉	chi han	1
+齿轮齿轮齿轮	chi lun chi lun chi lun	1
+充电池人	chong dian chi ren	1
+创造	chuang zao	1
+次时代水精灵	ci shi dai shui jing ling	1
+大风	da feng	1
+大岚	da lan	1
+导游	dao you	1
+帝龙	di long	1
+电池人	dian chi ren	1
+电子族	dian zi zu	1
+董鸡	dong ji	1
+董平	dong ping	1
+豆娘	dou niang	1
+毒蛾	du e	1
+恶灵	e ling	1
+发条	fa tiao	1
+防火龙	fang huo long	1
+废铁	fei tie	1
+凤凰木	feng huang mu	1
+孵化	fu hua	1
+浮幽樱	fu you ying	1
+副葬	fu zang	1
+刚鬼	gang gui	1
+古遗物	gu yi wu	1
+馆长	guan zhang	1
+光抽	guang chou	1
+光枪	guang qiang	1
+光天使	guang tian shi	1
+光天星因	guang tian xing yin	1
+汉诺	han nuo	1
+汉诺的崇高力量	han nuo de chong gao li liang	1
+黑洞	hei dong	1
+黑圣枪	hei sheng qiang	1
+黑天枪	hei tian qiang	1
+黑羽抽	hei yu chou	1
+幻变骚灵	huan bian sao ling	1
+蝗虫	huang chong	1
+黄蜂	huang feng	1
+黄金柜	huang jin gui	1
+黄再生	huang zai sheng	1
+灰流丽	hui liu li	1
+混充	hun chong	1
+混沌	hun dun	1
+混黑	hun hei	1
+机壳	ji ke	1
+激流	ji liu	1
+祭品	ji pin	1
+疾行机人	ji xing ji ren	1
+甲虫	jia chong	1
+加速人	jia su ren	1
+剑斗兽	jian dou shou	1
+将军树	jiang jun shu	1
+角型	jiao xing	1
+解放	jie fang	1
+解禁	jie jin	1
+进化帝	jin hua di	1
+禁止	jin zhi	1
+旧神	jiu shen	1
+巨眼	ju yan	1
+巨岩掌	ju yan zhang	1
+铠甲人	kai jia ren	1
+开辟	kai pi	1
+凯撒	kai sa	1
+科瑞森	ke rui sen	1
+空母	kong mu	1
+控制员	kong zhi yuan	1
+蜡板	la ban	1
+狼吠	lang fei	1
+老希	lao xi	1
+雷电	lei dian	1
+雷海马	lei hai ma	1
+连接	lian jie	1
+灵摆	ling bai	1
+灵峰	ling feng	1
+零最大	ling zui da	1
+流天	liu tian	1
+龙谷	long gu	1
+龙庙	long miao	1
+龙祖	long zu	1
+马斗	ma dou	1
+码语者	ma yu zhe	1
+米德拉什	mi de la shen	1
+魔导	mo dao	1
+魔科	mo ke	1
+魔妖	mo yao	1
+拿非利	na fei li	1
+奈菲丝之引导者	nai fei si zhi yin dao zhe	1
+奈芙缇丝的凤凰神	nai fu ti si de feng huang shen	1
+奈落	nai luo	1
+脑魔	nao mo	1
+尼禄	ni lu	1
+念动力	nian dong li	1
+纽扣型	niu kou xing	1
+瓢虫	piao chong	1
+骑斗	qi dou	1
+枪斗	qiang dou	1
+人渣	ren zha	1
+融合	rong he	1
+三叉	san cha	1
+森罗	sen luo	1
+闪刀姬	shan dao ji	1
+上级召唤	shang ji zhao huan	1
+神警	shen jing	1
+神判	shen pan	1
+肾骑士	shen qi shi	1
+神宣	shen xuan	1
+神宣龙	shen xuan long	1
+神忠	shen zhong	1
+圣杯	sheng bei	1
+圣防	sheng fang	1
+牲祭	sheng ji	1
+圣骑士	sheng qi shi	1
+圣枪	sheng qiang	1
+施舍	shi she	1
+时钟龙	shi zhong long	1
+手坑	shou keng	1
+书士	shu shi	1
+术士	shu shi	1
+数学家	shu xue jia	1
+水机	shui ji	1
+水精鳞	shui jing lin	1
+死灵	si ling	1
+死灵师	si ling shi	1
+死苏	si su	1
+丝袜	si wa	1
+死转	si zhuan	1
+宋江	song jiang	1
+锁鸟	suo niao	1
+弹压	tan ya	1
+淘气仙星	tao qi xian xing	1
+天抽	tian chou	1
+天罚龙	tian fa long	1
+天狗	tian gou	1
+天玑	tian ji	1
+天士	tian shi	1
+天枢	tian shu	1
+天璇	tian xuan	1
+同调	tong diao	1
+蛙帝	wa di	1
+王触	wang chu	1
+王通	wang tong	1
+屋敷童	wu fu tong	1
+武库人	wu ku ren	1
+溪谷	xi gu	1
+先史遗产	xian shi yi chan	1
+限制	xian zhi	1
+小车	xiao che	1
+小开辟	xiao kai pi	1
+星骸	xing hai	1
+星遗物	xing yi wu	1
+星因士	xing yin shi	1
+幸运	xing yun	1
+旋风	xuan feng	1
+杨志	yang zhi	1
+业务用	ye wu yong	1
+叶子	ye zi	1
+遗物	yi wu	1
+影孢子	ying bao zi	1
+影依	ying yi	1
+永火	yong huo	1
+幽鬼兔	you gui tu	1
+鱼斗	yu dou	1
+娱乐伙伴	yu le huo ban	1
+愚埋	yu mai	1
+御用	yu yong	1
+月书	yue shu	1
+战车	zhan che	1
+张天师	zhang tian shi	1
+针虫	zhen chong	1
+征龙	zheng long	1
+指名者	zhi ming zhe	1
+终末	zhong mo	1
+朱诺	zhu nuo	1
+转生炎兽	zhuan sheng yan shou	1
+准限制	zhun xian zhi	1
+自奏圣乐	zi zou sheng yue	1

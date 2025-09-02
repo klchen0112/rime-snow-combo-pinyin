@@ -1,0 +1,45 @@
+patch:
+  __patch:
+    # 默認佈局：七指禪
+    # - combo_pinyin_layouts:/use_pc_layout
+    # 解封下列代碼，選用其他佈局選項
+    # 七指禪，運用縮略碼
+    # - combo_pinyin_layouts:/use_pc_layout_with_briefs
+    # 八指禪，默認配置：字母 A = 宮保拼音碼 H
+    - combo_pinyin_layouts:/use_engrammer_layout
+    # 八指禪，可選配置：設定左手拇指位 H 的鍵碼
+    # - combo_pinyin_layouts:/use_semicolon
+    # - combo_pinyin_layouts:/use_apostrophe
+    #- combo_pinyin_layouts:/use_control
+    # - combo_pinyin_layouts:/use_alt
+    # - combo_pinyin_layouts:/use_shift
+    # 回車鍵上屏按鍵序列
+    - combo_pinyin_layouts:/use_return_to_commit_raw_input
+    # 回車鍵確認當前候選
+    # - combo_pinyin_layouts:/use_return_to_confirm
+
+    # 用家自選配置
+    # - combo_pinyin_engrammer.custom:/patch?
+    # emoji kaomoji 转换
+    - emoji:/emoji
+    - kaomoji:/kaomoji
+    - traditionalize:/s2t
+  __include:
+    # 使用八股文語言模型
+    - grammar:/wx?
+  switches/+:
+    - name: emoji
+      states: [💀, 😄]
+      reset: 1
+    - name: kaomoji
+      states: [ ￣へ￣, (u‿ฺu✿ฺ) ]
+      reset: 1
+  engine/filters/@before 0: simplifier@emoji    # Emoji
+  engine/filters/@before 1: simplifier@kaomoji # kaomoji
+  translator/packs/+:
+    - yugioh
+    - pinyin_simp_moe
+    - wiki
+
+
+

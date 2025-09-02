@@ -1,0 +1,19 @@
+# Rime dictionary
+# encoding: utf-8
+---
+name: easy_en.extended
+version: "2022.05.28"
+sort: by_weight #字典初始排序，可選original或by_weight
+use_preset_vocabulary: false
+
+import_tables:
+  - "en_dicts/easy_en"
+  - en_dicts/en.toefl
+  - en_dicts/en.popular # 最常用的英语单词
+  - "en_dicts/calculus_en_word"
+  - "en_dicts/linear_algebra_en_word"
+  - "en_dicts/probability_en_word"
+  - "en_dicts/algorithm"
+  - "en_dicts/ide_editor"
+  - "en_dicts/company"
+

@@ -1,0 +1,149 @@
+# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+    schema_id: japanese
+    name: 日本語
+    version: "v0.2"
+    author:
+        - ensigma96 <ensigma96@gmail.com>
+    dependencies:
+        - snow_pinyin
+        - stroke
+
+switches:
+    - name: ascii_mode
+      reset: 0
+      states: [中文, 西文]
+    - name: full_shape
+      states: [半角, 全角]
+    - name: traditionalization
+      states: [漢字, 汉字]
+      reset: 0
+    #- options: [jp_variants, zh_simp, zh_tw ]
+    #- options: [zh_simp, zh_tw ]
+    #  reset: 0
+    #  states:
+    #    #- 字形 → 日本
+    #    - 字形 → 大陸
+    #    - 字形 → 台灣
+    - name: ascii_punct
+      states: [。，, ．，]
+
+engine:
+    processors:
+        - ascii_composer
+        - recognizer
+        - key_binder
+        - speller
+        - punctuator
+        - selector
+        - navigator
+        - express_editor
+    segmentors:
+        - ascii_segmentor
+        - matcher
+        - abc_segmentor
+        - affix_segmentor@putonghua_to_kanji_lookup
+        - punct_segmentor
+        - fallback_segmentor
+    translators:
+        - punct_translator
+        - script_translator
+        - reverse_lookup_translator
+        - script_translator@putonghua_to_kanji_lookup
+    filters:
+        - simplifier
+        #- simplifier@jp_variants
+        #- simplifier@zh_simp
+        #- simplifier@zh_tw
+        - uniquifier
+        - reverse_lookup_filter@putonghua_to_kanji_reverse_lookup
+
+speller:
+    alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
+    delimiter: " '"
+    algebra:
+        - "derive/_/x/"
+        - "derive/-/q/"
+        # Add / remove rules the as you wish
+        - "derive/i_e/ye/"
+        # - 'derive/fu/hu/'
+
+translator:
+    dictionary: japanese
+    spelling_hints: 5
+    comment_format:
+        - "xlit|q|ー|"
+    preedit_format:
+        - "xlit|q|ー|"
+
+putonghua_to_kanji_lookup:
+    tag: putonghua_to_kanji_lookup
+    prefix: "`" # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+    dictionary: snow_pinyin
+    preedit_format:
+        - xform/([jqxy])v/$1u/ # 显示为 ju qu xu yu
+        # - xform/([nl])v/$1ü/    # 显示为 nü lü
+        # - xform/([nl])ue/$1üe/  # 显示为 nüe lüe
+        - xform/([nl])v/$1v/ # 显示为 nv lv
+        - xform/([nl])ue/$1ve/ # 显示为 nve lve
+    tips: 【拼音查日】
+    #closing_tips: 【粵拼】
+
+putonghua_to_kanji_reverse_lookup:
+    tags: [putonghua_to_kanji_lookup]
+    dictionary: japanese
+    spelling_hints: 10
+    comment_format:
+        - "xlit|q|ー|"
+    preedit_format:
+        - "xlit|q|ー|"
+
+# simplifier:
+#  option_name: jp_variants
+#  opencc_config: jp_t2s.json
+
+reverse_lookup:
+    dictionary: stroke
+    enable_completion: true
+    prefix: "`H"
+    suffix: "`"
+    tips: 〔筆畫〕
+    preedit_format:
+        - xlit/hspnz/一丨丿丶乙/
+    comment_format:
+        - "xlit|q|ー|"
+
+punctuator:
+    import_preset: default
+
+key_binder:
+    import_preset: default
+
+recognizer:
+    import_preset: default
+    patterns:
+        reverse_lookup: "`H[a-z]*`?$"
+        putonghua_to_kanji_lookup: "`[a-z;/,.]*`?$"
+#zh_jp:
+#  option_name: zh_jp
+#  opencc_config: jp_t2s.json
+#  #tips: all
+#  tips: none
+
+# zh_simp:
+#   option_name: zh_simp
+#   opencc_config: t2s.json
+#   tips: none
+
+# zh_tw:
+#   option_name: zh_tw
+#   opencc_config: t2tw.json
+#   tips: none
+
+# jp_variants:
+#   option_name: jp_variants
+#   opencc_config: jp_t2s.json
+#   tips: none
