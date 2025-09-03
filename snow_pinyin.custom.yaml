@@ -15,7 +15,7 @@ patch:
       reset: 1
   engine/filters/@before 2: simplifier@emoji    # Emoji
   engine/filters/@before 3: simplifier@kaomoji # kaomoji
-  translator/packs/+:
-    - yugioh
-    - pinyin_simp_moe
-    - wiki
+  #translator/packs/+:
+  #  - yugioh
+  #  - pinyin_simp_moe
+  #  - wiki

@@ -10,91 +10,28 @@ schema:
   description: |
     並擊輸入拼音。
     專爲分體式或有拆分空格設計的鍵盤優化，左右手拇指各司一鍵以利並擊。
-  dependencies:
-    - snow_pinyin
 
-switches:
-  - name: ascii_mode
-    reset: 0
-    states: [中文, 西文]
-  - name: full_shape
-    states: [半角, 全角]
-  - name: ascii_punct
-    states: [。，, ．，]
-  #- name: prediction
-  #  states: [ 测, 预 ]
-  #  reset: 0
+__include: combo_pinyin.schema:/
+__patch:
+  # 選用「八指禪」及兼容佈局
+  - combo_pinyin_layouts:/use_split_layout
+  # 默認配置爲兼容佈局。
+  # 標準鍵盤左手小指字母 A 鍵當作宮保拼音碼 H。
+  # 可編程鍵盤須設拇指左鍵爲字母 A。
+  # 或者解封下列註釋行之一，選定左手拇指 H 鍵所用的鍵碼：
+  # 拇指左鍵設爲分號
+  # - combo_pinyin_layouts:/use_semicolon
+  # 拇指左鍵設爲單引號
+  # - combo_pinyin_layouts:/use_apostrophe
+  # 拇指左鍵設爲 Control
+  #- combo_pinyin_layouts:/use_control
+  # 拇指左鍵設爲 Alt
+  # - combo_pinyin_layouts:/use_alt
+  # 拇指左鍵設爲 Shift
+  # - combo_pinyin_layouts:/use_shift
+  - combo_pinyin_layouts:/use_return_to_commit_raw_input
+  - combo_pinyin_split.custom:/patch?
 
-engine:
-  processors:
-    #- predictor                                 #联想处理器
-    #- lua_processor@*select_character          # 以词定字
-    - ascii_composer #
-    - recognizer
-    - chord_composer # 實現並擊按鍵處理
-    - key_binder
-    - speller
-    - punctuator
-    - selector
-    - navigator
-    - express_editor
-  segmentors:
-    - ascii_segmentor
-    - matcher
-    - abc_segmentor
-    - punct_segmentor
-    - fallback_segmentor
-  translators:
-    - predict_translator
-    - punct_translator
-    - script_translator
-  filters:
-    - uniquifier
-
-
-chord_composer:
-
-speller:
-  alphabet: "zyxwvutsrqponmlkjihgfedcba'"
-  initials: "zyxwvutsrqponmlkjihgfedcba"
-  delimiter: " "
-  algebra:
-    # 冰雪拼音兼容
-    - derive/\d$//
-    # 合併音節
-    - derive/^lo$/lou/
-    # 合併 ⟨o / ou⟩、⟨e / ei⟩兩組韻母
-    #- derive/^([bpmf])?ou$/$1o/
-    #- derive/^([zcsr]h?)?ei$/$1e/
-    # 拼音音節一律後加隔音符號，避免音節切分歧義
-    - "xform/^([a-z]+)$/$1'/"
-
-translator:
-  dictionary: snow_pinyin
-  prism: combo_pinyin
-  packs:
-    - snow_pinyin.base
-    - snow_pinyin.ext
-    - snow_pinyin.tencent
-    - snow_pinyin.user
-  preedit_format:
-    - xform/([nl])v/$1ü/
-    - xform/([nl])ue/$1üe/
-    - xform/([jqxy])v/$1u/
-    - "xform/' /'/"
-
-punctuator:
-  import_preset: default
-
-key_binder:
-  import_preset: default
-
-recognizer:
-  import_preset: default
-
-editor:
-  bindings:
-    BackSpace: back_syllable
 
 
 

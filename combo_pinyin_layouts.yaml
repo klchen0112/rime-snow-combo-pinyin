@@ -190,6 +190,10 @@ use_alpha28_layout:
   chord_composer/alphabet: 'swxdecfrvgtbjumh kiloaqzynp'
   chord_composer/algebra/@0: 'xlit|swxdecfrvgtbjumh kiloaqzynp|SCZHLFGDBKTPIUVVANREOXXXXXX|'
 
+use_engrammer_layout:
+  chord_composer/alphabet: "ieojaukz{Control_L}chlr tdsw"
+  chord_composer/algebra/@0: "xlit|ieojaukzchlr tdsw|SCLFZDBGHIUVANREO|"
+  chord_composer/use_control: true
 # 補丁模板
 # 補丁文件：combo_pinyin.custom.yaml
 # 若直接修改輸入方案文件，則不需要第一級 `patch` 節點

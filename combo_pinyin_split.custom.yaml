@@ -1,16 +1,8 @@
 patch:
   __patch:
-    - combo_pinyin_layouts:/use_split_layout
-    - combo_pinyin_layouts:/use_control
-    - combo_pinyin_layouts:/use_return_to_commit_raw_input
-
-
-
     - emoji:/emoji
     - kaomoji:/kaomoji
     - traditionalize:/s2t
-  __include:
-    # 使用八股文語言模型
     - grammar:/wx?
   switches/+:
     - name: emoji
@@ -19,9 +11,23 @@ patch:
     - name: kaomoji
       states: [ ￣へ￣, (u‿ฺu✿ฺ) ]
       reset: 1
+  switches/@2:
+    name: traditionalization
+    states: [ 汉字, 漢字 ]
   engine/filters/@before 0: simplifier@emoji    # Emoji
   engine/filters/@before 1: simplifier@kaomoji # kaomoji
-  translator/packs/+:
-    - yugioh
-    - pinyin_simp_moe
-    - wiki
+  translator/dictionary: snow_pinyin
+  translator/prism: combo_pinyin
+  translator/packs:
+    - snow_pinyin.base
+    - snow_pinyin.ext
+    - snow_pinyin.tencent
+    - snow_pinyin.user
+    #- yugioh
+    #- pinyin_simp_moe
+    #- wiki
+  schema/dependencies:
+    - snow_pinyin
+  speller/algebra/@before 0: derive/\d$//
+
+
