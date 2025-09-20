@@ -191,9 +191,14 @@ use_alpha28_layout:
   chord_composer/algebra/@0: 'xlit|swxdecfrvgtbjumh kiloaqzynp|SCZHLFGDBKTPIUVVANREOXXXXXX|'
 
 use_engrammer_layout:
-  chord_composer/alphabet: "ieojaukz{Control_L}chlr tdsw"
-  chord_composer/algebra/@0: "xlit|ieojaukzchlr tdsw|SCLFZDBGHIUVANREO|"
-  chord_composer/use_control: true
+  chord_composer: { __include: split_layout_config }
+  __patch:
+    - chord_composer/alphabet: "ieojaukz{Control_L}chlr tdsw"
+    - chord_composer/algebra/@3: "xlit|ieojaukzchlr tdsw|SCLFZDBGHIUVANREO|"
+    - chord_composer/use_control: true
+    - chord_composer/algebra/+: { __include: split_layout_initial_rules }
+    - chord_composer/algebra/+: { __include: rime_rules }
+
 # 補丁模板
 # 補丁文件：combo_pinyin.custom.yaml
 # 若直接修改輸入方案文件，則不需要第一級 `patch` 節點

@@ -23,12 +23,12 @@ __patch:
   # - combo_pinyin_layouts:/use_semicolon
   # 拇指左鍵設爲單引號
   # - combo_pinyin_layouts:/use_apostrophe
-  # 拇指左鍵設爲 Control
-  #- combo_pinyin_layouts:/use_control
+  # 拇指左鍵設爲 Contro「切换方案」
+  - combo_pinyin_layouts:/use_control
   # 拇指左鍵設爲 Alt
   # - combo_pinyin_layouts:/use_alt
   # 拇指左鍵設爲 Shift
-  # - combo_pinyin_layouts:/use_shift
+  #- combo_pinyin_layouts:/use_shift
   - combo_pinyin_layouts:/use_return_to_commit_raw_input
   - combo_pinyin_split.custom:/patch?
 
