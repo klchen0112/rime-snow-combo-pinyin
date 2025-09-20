@@ -194,6 +194,7 @@ use_engrammer_layout:
   chord_composer: { __include: split_layout_config }
   __patch:
     - chord_composer/alphabet: "ieojaukz{Control_L}chlr tdsw"
+    - chord_composer/algebra/@0: "xform/\\{Control_L\\}/c/"
     - chord_composer/algebra/@3: "xlit|ieojaukzchlr tdsw|SCLFZDBGHIUVANREO|"
     - chord_composer/use_control: true
     - chord_composer/algebra/+: { __include: split_layout_initial_rules }
