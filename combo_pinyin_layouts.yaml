@@ -193,12 +193,19 @@ use_alpha28_layout:
 use_engrammer_layout:
   chord_composer: { __include: split_layout_config }
   __patch:
-    - chord_composer/alphabet: "ieojaukz{Control_L}chlr tdsw"
+    - chord_composer/alphabet: "ieojaukz{Shift_L}chlr tdsw"
     - chord_composer/algebra/@0: "xform/\\{Control_L\\}/c/"
+    - chord_composer/algebra/@1: "xform/\\{Alt_L\\}/c/"
+    - chord_composer/algebra/@2: "xform/\\{Shift_L\\}/c/"
     - chord_composer/algebra/@3: "xlit|ieojaukzchlr tdsw|SCLFZDBGHIUVANREO|"
-    - chord_composer/use_control: true
+    - chord_composer/use_shift: true
     - chord_composer/algebra/+: { __include: split_layout_initial_rules }
     - chord_composer/algebra/+: { __include: rime_rules }
+    -  ascii_composer:
+        __include: default:/ascii_composer
+        switch_key/+:
+          Shift_L: noop
+    - recognizer: {}
 
 # 補丁模板
 # 補丁文件：combo_pinyin.custom.yaml
