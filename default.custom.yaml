@@ -3,7 +3,6 @@ patch:
   switcher:
     caption: "「切换方案」"
     hotkeys:
-      - "Shift+space"
       - F4
     save_options:
       - ascii_punct
