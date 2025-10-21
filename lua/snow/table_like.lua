@@ -50,6 +50,12 @@ function t12.func(input, segment, env)
   end
 end
 
+---@param env ProxyTranslatorEnv
+function t12.fini(env)
+  env.translator = nil
+  collectgarbage()
+end
+
 local jianpin = {}
 
 ---@param env ProxyTranslatorEnv
@@ -92,6 +98,12 @@ function jianpin.func(input, segment, env)
       end
     end
   end
+end
+
+---@param env ProxyTranslatorEnv
+function jianpin.fini(env)
+  env.translator = nil
+  collectgarbage()
 end
 
 return {
