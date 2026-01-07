@@ -31,7 +31,7 @@ function snow.current(context)
   return context.input:sub(segment.start + 1, segment._end)
 end
 
-snow.debug = true
+snow.debug = false
 
 ---格式化 Info 日志
 ---@param format string|number
@@ -83,6 +83,17 @@ function snow.sub(s, i, j)
   end
 end
 
+---@param s string
+---@param sep string
+function snow.split(s, sep)
+  ---@type string[]
+  local result = {}
+  for part in s:gmatch("([^" .. sep .. "]+)") do
+    table.insert(result, part)
+  end
+  return result
+end
+
 ---@param env Env
 function snow.get_dictionary_path(env)
   return rime_api.get_user_data_dir() .. ("/%s.fixed.txt"):format(env.engine.schema.schema_id)
@@ -92,10 +103,11 @@ end
 ---@param proxy string
 function snow.prepare(candidate, proxy, normal)
   local proxy_segment = proxy:sub(1, candidate._end - candidate._start);
-  candidate._end = candidate._start + proxy_segment:gsub("[ ?]", ""):len()
+  candidate._end = candidate._start + proxy_segment:gsub("[ ?~]", ""):len()
   if not normal then
     candidate.quality = candidate.quality + 1
   end
+  -- candidate.comment = candidate.comment .. (" [%f, %d, %d]"):format(candidate.quality, candidate._start, candidate._end)
   return candidate
 end
 
