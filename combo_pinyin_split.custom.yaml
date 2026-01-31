@@ -1,4 +1,5 @@
 patch:
+  __include: grammar:/wx
   __patch:
     - emoji:/emoji
     - kaomoji:/kaomoji
